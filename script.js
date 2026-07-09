@@ -113,13 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // 5. Intelligent Client-Side Intake Validation Engine with Netlify AJAX Submit
+    // 5. Intelligent Client-Side Intake Validation Engine
     const form = document.getElementById('loanContactForm');
 
     if (form) {
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // Temporarily stop form to check validation
+            e.preventDefault();
             let isFormValid = true;
 
             const fields = [
@@ -142,20 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // If everything is completely valid, shoot the data to Netlify via AJAX
             if (isFormValid) {
-                const formData = new FormData(form);
-                
-                fetch("/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString(),
-                })
-                .then(() => {
-                    alert('Success! Your credit evaluation file has been generated. An expert NexusGlobal executive will call you shortly.');
-                    form.reset();
-                })
-                .catch((error) => alert('Form submission error: ' + error));
+                // Mock execution message - link directly to production data handlers here
+                alert('Success! Your credit evaluation file has been generated. An expert NexusGlobal executive will call you shortly.');
+                form.reset();
             }
         });
 
@@ -166,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
 
     // 6. Navigation Link Highlighting via Page Scroll Positions
     const activeSections = document.querySelectorAll('section[id]');

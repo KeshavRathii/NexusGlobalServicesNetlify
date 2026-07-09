@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (form) {
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Stop the default page reload to validate first
             let isFormValid = true;
 
             const fields = [
@@ -141,10 +141,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // If everything is valid, package the data and transmit to Netlify
             if (isFormValid) {
-                // Mock execution message - link directly to production data handlers here
-                alert('Success! Your credit evaluation file has been generated. An expert NexusGlobal executive will call you shortly.');
-                form.reset();
+                const formData = new FormData(form);
+                
+                // Explicitly bind the form designation parameter for Netlify's router
+                formData.append('form-name', 'NexusGlobal-Leads');
+                
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString(),
+                })
+                .then(() => {
+                    alert('Success! Your credit evaluation file has been generated. An expert NexusGlobal executive will call you shortly.');
+                    form.reset();
+                })
+                .catch((error) => {
+                    alert('Form submission error: ' + error);
+                });
             }
         });
 
@@ -156,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
     // 6. Navigation Link Highlighting via Page Scroll Positions
     const activeSections = document.querySelectorAll('section[id]');
     

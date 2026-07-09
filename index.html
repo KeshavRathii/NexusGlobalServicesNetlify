@@ -540,32 +540,35 @@
                     <!-- Interactive Contact Form -->
                     <div class="card contact-card">
                         <form id="loanContactForm" name="NexusGlobal-Leads" method="POST" data-netlify="true" novalidate>
+                            <input type="hidden" name="form-name" value="NexusGlobal-Leads">
                             <div class="form-group">
                                 <label for="fullName">Full Name *</label>
-                                <input type="text" id="fullName" required placeholder="John Doe">
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
                                 <span class="error-msg">Please enter your legal full name.</span>
                             </div>
+                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="phoneNumber">Phone Number *</label>
-                                    <input type="tel" id="phoneNumber" required placeholder="9876543210">
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="9876543210">
                                     <span class="error-msg">Provide a valid 10-digit contact line.</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="emailAddress">Email Address *</label>
-                                    <input type="email" id="emailAddress" required placeholder="john@example.com">
+                                    <input type="email" id="emailAddress" name="emailAddress" required placeholder="john@example.com">
                                     <span class="error-msg">Provide a valid digital email destination.</span>
                                 </div>
                             </div>
+                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="cityName">City *</label>
-                                    <input type="text" id="cityName" required placeholder="Mumbai">
+                                    <input type="text" id="cityName" name="cityName" required placeholder="Mumbai">
                                     <span class="error-msg">This line is mandatory for processing.</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="loanProduct">Loan Requirement *</label>
-                                    <select id="loanProduct" required>
+                                    <select id="loanProduct" name="loanProduct" required>
                                         <option value="">-- Choose Option --</option>
                                         <option value="personal">Personal Loan</option>
                                         <option value="business">Business Loan</option>
@@ -578,15 +581,17 @@
                                     <span class="error-msg">Please pick a service structure.</span>
                                 </div>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="userMessage">Additional Requirements (Optional)</label>
-                                <textarea id="userMessage" rows="4" placeholder="Mention preferred bank options or specific funding goals..."></textarea>
+                                <textarea id="userMessage" name="userMessage" rows="4" placeholder="Mention preferred bank options or specific funding goals..."></textarea>
                             </div>
+                            
                             <div class="form-actions-buttons">
                                 <button type="submit" class="btn btn-primary">Submit Details</button>
                                 <button type="reset" class="btn btn-reset">Reset Form</button>
                             </div>
-                        </form>
+                        </form>              
                     </div>
 
                     <!-- Location and Operations Meta Info -->
